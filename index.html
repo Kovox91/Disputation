@@ -132,7 +132,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Recovering Biological Inference from Non-Standard RNA-Seq</h1>
-  <p class="subtitle">Mitochondrial sRNA states in Toxoplasma gondii and plastid-associated programs in the Arabidopsis thaliana shoot apex</p>
+  <p class="subtitle">Mitochondrial sRNA states in <em>Toxoplasma gondii</em> and plastid-associated programs in the <em>Arabidopsis thaliana</em> shoot apex</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -146,15 +146,33 @@ Sascha Maschmann
 </section>
 <section id="welcome" class="slide level2">
 <h2>Welcome</h2>
-<p>Happy to be here<br>
-Enjoy your Drink, this is supposed to be fun!</p>
-<!-- Toxo -->
 </section>
-<section id="toxoplasma-intro-slide" class="slide level2">
-<h2>Toxoplasma Intro Slide</h2>
+<section id="welcome-enjoy-your-drink-this-is-supposed-to-be-fun" class="slide level2">
+<h2>Welcome – Enjoy your drink, this is supposed to be fun!</h2>
+<div class="fragment">
+<ul>
+<li><em>Toxoplasma gondii</em> mitochondria sRNA seq
+<ul>
+<li>Putative RNA-binding protein mRSiC</li>
+<li>Putative RNA helicase mRHel1</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><em>Arabidopsis thaliana</em> Single-cell RNA-Seq
+<ul>
+<li>Plastid-associated programs in the shoot apical meristem</li>
+<li>CP29A in early Development</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Recovering biological inference from non-standard RNA-Seq data.</p>
+</div>
 </section>
-<section id="toxo-phenotypes" class="slide level2 figure-slide">
-<h2>Toxo Phenotypes</h2>
+<section id="mrhel1-and-mrsic-as-entrypoints-into-mitochondrial-rna-homeostasis" class="slide level2 figure-slide">
+<h2>mRHel1 and mRSiC as Entrypoints into Mitochondrial RNA Homeostasis</h2>
 <div class="image-sequence-three">
 <div class="sequence-item fragment" data-fragment-index="1">
 <p><img data-src="figures/fig01_toxo_phenotypes_01.png"></p>
@@ -168,14 +186,24 @@ Enjoy your Drink, this is supposed to be fun!</p>
 </div>
 <p><span class="fig-attribution fragment" data-fragment-index="1" style="bottom: 2em;">Nikiforos Drakoulis, BioRxive 2026</span> <span class="fig-attribution fragment" data-fragment-index="3">Zala Gluhic, unpublished</span></p>
 </section>
-<section id="default-pipeline-approach" class="slide level2">
-<h2>Default Pipeline Approach</h2>
-<p>mRNA-Seq derived<br>
-delivered DEGs<br>
-not possible to proof with northern blots</p>
+<section id="the-t.-gongii-mitoribosome-is-divergent" class="slide level2 figure-slide">
+<h2>The <em>T. gongii</em> Mitoribosome is divergent</h2>
+<div class="png-stage">
+<p><img data-src="figures/toxo_mitoribosome.png"></p>
+</div>
+<p><span class="fig-attribution">Wang et al., 2024</span></p>
 </section>
-<section id="feature-independence" class="slide level2 figure-slide">
-<h2>Feature Independence</h2>
+<section id="initial-analysis-pipeline-approach" class="slide level2">
+<h2>Initial Analysis Pipeline Approach</h2>
+<ul>
+<li class="fragment">RNA-Sequencing of mitochondrial sRNA</li>
+<li class="fragment">mRNA-Seq derived analysis pipeline</li>
+<li class="fragment">orthogonal validation failed to reproduce seq-derived accumulation patterns</li>
+</ul>
+</section>
+<section id="excourse-rna-seq-assumptions" class="slide level2">
+<h2>Excourse: RNA-Seq Assumptions</h2>
+<h3 class="figure-slide" id="feature-independence">Feature Independence</h3>
 <div class="svg-stage" data-svg-src="figures/fig04_feature_independence.svg" data-svg-id="fig01_1_featureIndependence">
 
 </div>
@@ -183,8 +211,9 @@ not possible to proof with northern blots</p>
 
 </div>
 </section>
-<section id="stable-composition" class="slide level2 figure-slide">
-<h2>Stable Composition</h2>
+<section id="excourse-rna-seq-assumptions-1" class="slide level2">
+<h2>Excourse: RNA-Seq Assumptions</h2>
+<h3 class="figure-slide" id="stable-composition">Stable Composition</h3>
 <div class="svg-stage" data-svg-src="figures/fig05_stable_composition.svg" data-svg-id="fig01_2_stableComposition">
 
 </div>
@@ -192,8 +221,9 @@ not possible to proof with northern blots</p>
 
 </div>
 </section>
-<section id="transcript-interpretability" class="slide level2 figure-slide">
-<h2>Transcript Interpretability</h2>
+<section id="excourse-rna-seq-assumptions-2" class="slide level2">
+<h2>Excourse: RNA-Seq Assumptions</h2>
+<h3 class="figure-slide" id="transcript-interpretability">Transcript Interpretability</h3>
 <div class="svg-stage" data-svg-src="figures/fig06_transcript_interpretability.svg" data-svg-id="fig01_3_transcriptInterpretability">
 
 </div>
@@ -220,15 +250,7 @@ not possible to proof with northern blots</p>
 </section>
 <section id="new-pipeline-overview" class="slide level2">
 <h2>New Pipeline Overview</h2>
-<p>this is stable</p>
-<div class="fragment">
-<p>This appears on click</p>
-</div>
-<div class="fragment">
-<ul>
-<li>This appears on click</li>
-</ul>
-</div>
+<p>TODO</p>
 <!-- ## Normalisation Effects {.figure-slide}
 
 ::: {.svg-stage data-svg-src="figures/fig08_normalisation_effects.svg" data-svg-id="fig08_normalisation_effects"}

@@ -4,49 +4,56 @@
     "href": "index.html#welcome",
     "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
     "section": "Welcome",
-    "text": "Welcome\nHappy to be here\nEnjoy your Drink, this is supposed to be fun!"
+    "text": "Welcome"
   },
   {
-    "objectID": "index.html#toxoplasma-intro-slide",
-    "href": "index.html#toxoplasma-intro-slide",
+    "objectID": "index.html#welcome-enjoy-your-drink-this-is-supposed-to-be-fun",
+    "href": "index.html#welcome-enjoy-your-drink-this-is-supposed-to-be-fun",
     "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
-    "section": "Toxoplasma Intro Slide",
-    "text": "Toxoplasma Intro Slide"
+    "section": "Welcome – Enjoy your drink, this is supposed to be fun!",
+    "text": "Welcome – Enjoy your drink, this is supposed to be fun!\n\n\nToxoplasma gondii mitochondria sRNA seq\n\nPutative RNA-binding protein mRSiC\nPutative RNA helicase mRHel1\n\n\n\n\n\nArabidopsis thaliana Single-cell RNA-Seq\n\nPlastid-associated programs in the shoot apical meristem\nCP29A in early Development\n\n\n\n\nRecovering biological inference from non-standard RNA-Seq data."
   },
   {
-    "objectID": "index.html#toxo-phenotypes",
-    "href": "index.html#toxo-phenotypes",
+    "objectID": "index.html#mrhel1-and-mrsic-as-entrypoints-into-mitochondrial-rna-homeostasis",
+    "href": "index.html#mrhel1-and-mrsic-as-entrypoints-into-mitochondrial-rna-homeostasis",
     "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
-    "section": "Toxo Phenotypes",
-    "text": "Toxo Phenotypes\n\n\n\n\n\n\n\n\n\n\n\nNikiforos Drakoulis, BioRxive 2026 Zala Gluhic, unpublished"
+    "section": "mRHel1 and mRSiC as Entrypoints into Mitochondrial RNA Homeostasis",
+    "text": "mRHel1 and mRSiC as Entrypoints into Mitochondrial RNA Homeostasis\n\n\n\n\n\n\n\n\n\n\n\nNikiforos Drakoulis, BioRxive 2026 Zala Gluhic, unpublished"
   },
   {
-    "objectID": "index.html#default-pipeline-approach",
-    "href": "index.html#default-pipeline-approach",
+    "objectID": "index.html#the-t.-gongii-mitoribosome-is-divergent",
+    "href": "index.html#the-t.-gongii-mitoribosome-is-divergent",
     "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
-    "section": "Default Pipeline Approach",
-    "text": "Default Pipeline Approach\nmRNA-Seq derived\ndelivered DEGs\nnot possible to proof with northern blots"
+    "section": "The T. gongii Mitoribosome is divergent",
+    "text": "The T. gongii Mitoribosome is divergent\n\n\n\nWang et al., 2024"
   },
   {
-    "objectID": "index.html#feature-independence",
-    "href": "index.html#feature-independence",
+    "objectID": "index.html#initial-analysis-pipeline-approach",
+    "href": "index.html#initial-analysis-pipeline-approach",
     "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
-    "section": "Feature Independence",
-    "text": "Feature Independence"
+    "section": "Initial Analysis Pipeline Approach",
+    "text": "Initial Analysis Pipeline Approach\n\nRNA-Sequencing of mitochondrial sRNA\nmRNA-Seq derived analysis pipeline\northogonal validation failed to reproduce seq-derived accumulation patterns"
   },
   {
-    "objectID": "index.html#stable-composition",
-    "href": "index.html#stable-composition",
+    "objectID": "index.html#excourse-rna-seq-assumptions",
+    "href": "index.html#excourse-rna-seq-assumptions",
     "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
-    "section": "Stable Composition",
-    "text": "Stable Composition"
+    "section": "Excourse: RNA-Seq Assumptions",
+    "text": "Excourse: RNA-Seq Assumptions\nFeature Independence"
   },
   {
-    "objectID": "index.html#transcript-interpretability",
-    "href": "index.html#transcript-interpretability",
+    "objectID": "index.html#excourse-rna-seq-assumptions-1",
+    "href": "index.html#excourse-rna-seq-assumptions-1",
     "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
-    "section": "Transcript Interpretability",
-    "text": "Transcript Interpretability"
+    "section": "Excourse: RNA-Seq Assumptions",
+    "text": "Excourse: RNA-Seq Assumptions\nStable Composition"
+  },
+  {
+    "objectID": "index.html#excourse-rna-seq-assumptions-2",
+    "href": "index.html#excourse-rna-seq-assumptions-2",
+    "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
+    "section": "Excourse: RNA-Seq Assumptions",
+    "text": "Excourse: RNA-Seq Assumptions\nTranscript Interpretability"
   },
   {
     "objectID": "index.html#toxoplasma-pseudo-genome",
@@ -60,7 +67,7 @@
     "href": "index.html#new-pipeline-overview",
     "title": "Recovering Biological Inference from Non-Standard RNA-Seq",
     "section": "New Pipeline Overview",
-    "text": "New Pipeline Overview\nthis is stable\n\nThis appears on click\n\n\n\nThis appears on click"
+    "text": "New Pipeline Overview\nTODO"
   },
   {
     "objectID": "index.html#mrsic-deg",
