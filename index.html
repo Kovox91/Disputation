@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
+
+  <meta name="author" content="Sascha Maschmann">
+  <meta name="dcterms.date" content="2026-02-06">
+  <title>Recovering Biological Inference from Non-Standard RNA-Seq</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-20a62b3aa8d701104d549792af59e93b.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Recovering Biological Inference from Non-Standard RNA-Seq</h1>
+  <p class="subtitle">Mitochondrial sRNA states in Toxoplasma gondii and plastid-associated programs in the Arabidopsis thaliana shoot apex</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Sascha Maschmann 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-02-06</p>
+</section>
+<section id="welcome" class="slide level2">
+<h2>Welcome</h2>
+<p>Happy to be here<br>
+Enjoy your Drink, this is supposed to be fun!</p>
+<!-- Toxo -->
+</section>
+<section id="toxoplasma-intro-slide" class="slide level2">
+<h2>Toxoplasma Intro Slide</h2>
+</section>
+<section id="toxo-phenotypes" class="slide level2 figure-slide">
+<h2>Toxo Phenotypes</h2>
+<div class="image-sequence-three">
+<div class="sequence-item fragment" data-fragment-index="1">
+<p><img data-src="figures/fig01_toxo_phenotypes_01.png"></p>
+</div>
+<div class="sequence-item fragment" data-fragment-index="2">
+<p><img data-src="figures/fig02_toxo_phenotypes_02.png"></p>
+</div>
+<div class="sequence-item fragment" data-fragment-index="3">
+<p><img data-src="figures/fig03_toxo_phenotypes_03.png"></p>
+</div>
+</div>
+<p><span class="fig-attribution fragment" data-fragment-index="1" style="bottom: 2em;">Nikiforos Drakoulis, BioRxive 2026</span> <span class="fig-attribution fragment" data-fragment-index="3">Zala Gluhic, unpublished</span></p>
+</section>
+<section id="default-pipeline-approach" class="slide level2">
+<h2>Default Pipeline Approach</h2>
+<p>mRNA-Seq derived<br>
+delivered DEGs<br>
+not possible to proof with northern blots</p>
+</section>
+<section id="feature-independence" class="slide level2 figure-slide">
+<h2>Feature Independence</h2>
+<div class="svg-stage" data-svg-src="figures/fig04_feature_independence.svg" data-svg-id="fig01_1_featureIndependence">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-anim-add-target=".fig011-met" data-anim-add-class="is-greyed" data-anim-remove-target=".fig011-violated" data-anim-remove-class="is-greyed">
+
+</div>
+</section>
+<section id="stable-composition" class="slide level2 figure-slide">
+<h2>Stable Composition</h2>
+<div class="svg-stage" data-svg-src="figures/fig05_stable_composition.svg" data-svg-id="fig01_2_stableComposition">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-anim-add-target=".fig012-met" data-anim-add-class="is-greyed" data-anim-remove-target=".fig012-violated" data-anim-remove-class="is-greyed">
+
+</div>
+</section>
+<section id="transcript-interpretability" class="slide level2 figure-slide">
+<h2>Transcript Interpretability</h2>
+<div class="svg-stage" data-svg-src="figures/fig06_transcript_interpretability.svg" data-svg-id="fig01_3_transcriptInterpretability">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-anim-add-target=".fig013-met" data-anim-add-class="is-greyed" data-anim-remove-target=".fig013-violated" data-anim-remove-class="is-greyed">
+
+</div>
+</section>
+<section id="toxoplasma-pseudo-genome" class="slide level2 figure-slide">
+<h2>Toxoplasma Pseudo-Genome</h2>
+<div class="svg-stage" data-svg-src="figures/fig07_toxo_pseudo_genome.svg" data-svg-id="fig07_toxo_pseudo_genome">
+
+</div>
+<div class="fig6-step-controls">
+<div class="fragment" data-anim-remove-target="#mRNA" data-anim-remove-class="is-hidden">
+
+</div>
+<div class="fragment" data-anim-remove-target="#rRNA" data-anim-remove-class="is-hidden">
+
+</div>
+<div class="fragment" data-anim-remove-target="#sRNA" data-anim-remove-class="is-hidden">
+
+</div>
+</div>
+</section>
+<section id="new-pipeline-overview" class="slide level2">
+<h2>New Pipeline Overview</h2>
+<p>this is stable</p>
+<div class="fragment">
+<p>This appears on click</p>
+</div>
+<div class="fragment">
+<ul>
+<li>This appears on click</li>
+</ul>
+</div>
+<!-- ## Normalisation Effects {.figure-slide}
+
+::: {.svg-stage data-svg-src="figures/fig08_normalisation_effects.svg" data-svg-id="fig08_normalisation_effects"}
+:::
+
+::: {.fig6-step-controls}
+::: {.fragment data-anim-remove-target="#g1" data-anim-remove-class="is-greyed"}
+:::
+::: {.fragment data-anim-remove-target="#g2" data-anim-remove-class="is-greyed"}
+:::
+::: -->
+</section>
+<section id="mrsic-deg" class="slide level2 figure-slide">
+<h2>mRSiC DEG</h2>
+<div class="svg-stage" data-svg-src="figures/fig09_mrsic_deg.svg" data-svg-id="fig07_mrsic_DEG">
+
+</div>
+<div class="fig07-step-controls">
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-facet-mode="1">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="2" data-facet-mode="2">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="3" data-facet-mode="3">
+
+</div>
+</div>
+</section>
+<section id="rna33_1-and-rna42" class="slide level2">
+<h2>RNA33_1 and RNA42</h2>
+<p>what are they?<br>
+Origin?</p>
+</section>
+<section id="mrsic-target-seqeunce" class="slide level2 figure-slide">
+<h2>mRSiC Target Seqeunce</h2>
+<div class="svg-stage" data-svg-src="figures/fig10_mrsic_target_sequence.svg" data-svg-id="fig10_mrsic_target_sequence">
+
+</div>
+</section>
+<section id="mrhel1-degs" class="slide level2 figure-slide">
+<h2>mRHel1 DEGs</h2>
+<div class="svg-stage" data-svg-src="figures/fig11_mrhel_degs.svg" data-svg-id="fig09_mrhel_degs">
+
+</div>
+<div class="fig07-step-controls">
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-facet-mode="1">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="2" data-facet-mode="2">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="3" data-facet-mode="3">
+
+</div>
+</div>
+</section>
+<section id="mrhel1-guides" class="slide level2 figure-slide">
+<h2>mRHel1 Guides</h2>
+<div class="svg-stage" data-svg-src="figures/fig12_mrhel_guides.svg" data-svg-id="fig10_mrhel_guides">
+
+</div>
+<div class="fig6-step-controls">
+<div class="fragment" data-anim-remove-target="#stage1" data-anim-remove-class="is-greyed">
+
+</div>
+<div class="fragment" data-anim-remove-target="#stage2" data-anim-remove-class="is-greyed">
+
+</div>
+</div>
+</section>
+<section id="transcript-polyadenylation-is-repliable" class="slide level2 figure-slide">
+<h2>Transcript Polyadenylation is Repliable</h2>
+<div class="svg-stage" data-svg-src="figures/fig13_polya_replicable.svg" data-svg-id="fig12A_polyA_replicable">
+
+</div>
+<div class="fig6-step-controls">
+<div class="fragment" data-fragment-index="1" data-anim-remove-target="#Step1" data-anim-remove-class="is-hidden">
+
+</div>
+<div class="fragment" data-fragment-index="2" data-anim-remove-target="#Step2" data-anim-remove-class="is-hidden">
+
+</div>
+</div>
+</section>
+<section id="structure-data-missmatch" class="slide level2 figure-slide">
+<h2>Structure Data Missmatch</h2>
+<div class="svg-stage" data-svg-src="figures/fig14_public_data_mismatch.svg" data-svg-id="fig14_public_data_mismatch">
+
+</div>
+<div class="fig6-step-controls">
+<div class="fragment" data-fragment-index="1" data-anim-remove-target="#shikha_blurr" data-anim-remove-class="is-greyed">
+
+</div>
+<div class="fragment" data-fragment-index="1" data-anim-remove-target="#shikha_hide" data-anim-remove-class="is-hidden">
+
+</div>
+<div class="fragment" data-fragment-index="3" data-anim-remove-target="#Structure" data-anim-remove-class="is-hidden">
+
+</div>
+</div>
+</section>
+<section id="rna34-presents-a-multimodal-tail-distribution" class="slide level2 figure-slide">
+<h2>RNA34 Presents a Multimodal Tail Distribution</h2>
+<div class="svg-stage" data-svg-src="figures/fig15_rna34.svg" data-svg-id="fig12C_RNA34">
+
+</div>
+<div class="fig6-step-controls">
+<div class="fragment" data-fragment-index="1" data-anim-remove-target="#step1" data-anim-remove-class="is-hidden">
+
+</div>
+</div>
+<!-- Arabidopsis -->
+</section>
+<section id="cp29a-localization" class="slide level2 figure-slide">
+<h2>CP29A Localization</h2>
+<div class="image-sequence-three">
+<div class="sequence-item fragment" data-fragment-index="1">
+<p><img data-src="figures/fig16_cp29a_localization_01.png"></p>
+</div>
+<div class="sequence-item fragment" data-fragment-index="2">
+<p><img data-src="figures/fig17_cp29a_localization_02.png"></p>
+</div>
+<div class="sequence-item fragment" data-fragment-index="3">
+<p><img data-src="figures/fig18_cp29a_localization_03.png"></p>
+</div>
+</div>
+<p><span class="fig-attribution fragment" data-fragment-index="2">Julia Legen, unpublished</span></p>
+</section>
+<section id="shoot-apical-meristem" class="slide level2">
+<h2>Shoot Apical Meristem</h2>
+</section>
+<section id="sc-sequencing" class="slide level2">
+<h2>SC-Sequencing</h2>
+<ul>
+<li>Technique<br>
+</li>
+<li>Dataset</li>
+<li>PolyA</li>
+</ul>
+</section>
+<section id="figure-13-chloro-percentages" class="slide level2 figure-slide">
+<h2>Figure 13 Chloro Percentages</h2>
+<div class="png-stage">
+<p><img data-src="figures/fig19_chloro_percentages.png"></p>
+</div>
+</section>
+<section id="plastid-coverage-originates-from-internal-priming" class="slide level2 figure-slide">
+<h2>Plastid Coverage Originates from Internal Priming</h2>
+<div class="png-stage">
+<p><img data-src="figures/fig20_coverage_comparison.png"></p>
+</div>
+</section>
+<section id="biased-coverage-across-clusters-suggests-biological-variation" class="slide level2 figure-slide">
+<h2>Biased Coverage Across Clusters Suggests Biological Variation</h2>
+<div class="svg-stage" data-svg-src="figures/fig21_coverage_across_clusters.svg" data-svg-id="fig14_02_coverage_across_cluster">
+
+</div>
+</section>
+<section id="figure-16-allclusters" class="slide level2 figure-slide">
+<h2>Figure 16 Allclusters</h2>
+<div class="png-stage">
+<p><img data-src="figures/fig22_all_clusters.png"></p>
+</div>
+</section>
+<section id="qualitycontrol-reveals-a-shaky-cluster" class="slide level2 figure-slide">
+<h2>QualityControl Reveals a Shaky Cluster</h2>
+<div class="svg-stage" data-svg-src="figures/fig23_chloroplast_qc.svg" data-svg-id="fig17_chloroplast_qc">
+
+</div>
+<div class="fig07-step-controls">
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-fig17-mode="1">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="2" data-fig17-mode="2">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="3" data-fig17-mode="3">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="4" data-fig17-mode="4">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="5" data-fig17-mode="5">
+
+</div>
+</div>
+</section>
+<section id="identification-of-cell-types" class="slide level2 figure-slide">
+<h2>Identification of Cell Types</h2>
+<div class="svg-stage" data-svg-src="figures/fig24_celltype_identification.svg" data-svg-id="fig18_F_celltype" data-celltype-groups="true">
+
+</div>
+<div class="fig6-step-controls">
+<div class="fragment" data-fig6-step="1">
+
+</div>
+<div class="fragment" data-fig6-step="2">
+
+</div>
+<div class="fragment" data-fig6-step="3">
+
+</div>
+<div class="fragment" data-fig6-step="4">
+
+</div>
+<div class="fragment" data-fig6-step="5">
+
+</div>
+<div class="fragment" data-fig6-step="6">
+
+</div>
+<div class="fragment" data-fig6-step="7">
+
+</div>
+<div class="fragment" data-fig6-step="8">
+
+</div>
+</div>
+</section>
+<section id="excurse-pearson-residuals" class="slide level2 figure-slide">
+<h2>Excurse: Pearson Residuals</h2>
+<div class="svg-stage" data-svg-src="figures/fig25_pearson_residual.svg" data-svg-id="fig00_pearson_residual">
+
+</div>
+<div class="fig6-step-controls">
+<div class="fragment" data-anim-remove-target="#low_deviation" data-anim-remove-class="is-hidden">
+
+</div>
+<div class="fragment" data-anim-add-target="#low_deviation" data-anim-add-class="is-hidden" data-anim-remove-target="#high_deviation" data-anim-remove-class="is-hidden">
+
+</div>
+</div>
+</section>
+<section id="plastid-gene-programs-correlate-with-nuclear-counter-parts" class="slide level2 figure-slide">
+<h2>Plastid Gene Programs Correlate with Nuclear Counter Parts</h2>
+<div class="svg-stage" data-svg-src="figures/fig26_program_correlations.svg" data-svg-id="fig19_program_correlations">
+
+</div>
+<div class="fig07-step-controls">
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-fig19-mode="1">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="2" data-fig19-mode="2">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="3" data-fig19-mode="3">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="4" data-fig19-mode="4">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="5" data-fig19-mode="5">
+
+</div>
+</div>
+</section>
+<section id="break" class="slide level2">
+<h2>Break</h2>
+<p>Summarize to here reasoning and strategy for subsetting (plot) especially F10</p>
+</section>
+<section id="sam-domains-in-subsetted-dataset" class="slide level2 figure-slide">
+<h2>SAM Domains in Subsetted Dataset</h2>
+<div class="svg-stage" data-svg-src="figures/fig27_domains_01.svg" data-svg-id="fig22_domains_01">
+
+</div>
+<div class="fig07-step-controls">
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-fig2201-step="1">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="2" data-fig2201-step="2">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="3" data-fig2201-step="3">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="4" data-fig2201-step="4">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="5" data-fig2201-step="5">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="6" data-fig2201-step="6">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="7" data-fig2201-step="7">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="8" data-fig2201-step="8">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="9" data-fig2201-step="9">
+
+</div>
+</div>
+</section>
+<section id="domain-association-is-not-a-discrete-state" class="slide level2 figure-slide">
+<h2>Domain Association is not a Discrete State</h2>
+<div class="svg-stage" data-svg-src="figures/fig28_domains_02.svg" data-svg-id="fig22_domains_02">
+
+</div>
+<div class="fig07-step-controls">
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-fig2202-mode="1">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="2" data-fig2202-mode="2">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="3" data-fig2202-mode="3">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="4" data-fig2202-mode="4">
+
+</div>
+</div>
+</section>
+<section id="chlorplast-programs-are-structured-in-early-development" class="slide level2 figure-slide">
+<h2>Chlorplast Programs Are Structured in Early Development</h2>
+<div class="svg-stage" data-svg-src="figures/fig29_program_heatmap.svg" data-svg-id="fig23_program_heatmap">
+
+</div>
+<div class="fig07-step-controls">
+<div class="fragment fig-focus-toggle" data-fragment-index="1" data-fig23-mode="1">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="2" data-fig23-mode="2">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="3" data-fig23-mode="3">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="4" data-fig23-mode="4">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="5" data-fig23-mode="5">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="6" data-fig23-mode="6">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="7" data-fig23-mode="7">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="8" data-fig23-mode="8">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="9" data-fig23-mode="9">
+
+</div>
+<div class="fragment fig-focus-toggle" data-fragment-index="10" data-fig23-mode="10">
+
+</div>
+</div>
+</section>
+<section id="cp29a-co-varies-with-organellar-gene-expression" class="slide level2 figure-slide">
+<h2>CP29A Co-Varies with Organellar Gene Expression</h2>
+<div class="svg-stage" data-svg-src="figures/fig30_cp29a_correlation.svg" data-svg-id="fig25_cp29a_correlation">
+
+</div>
+</section>
+<section id="cp29a-accumulates-in-early-primordium-associated-states" class="slide level2 figure-slide">
+<h2>CP29A Accumulates in Early Primordium-Associated States</h2>
+<div class="svg-stage" data-svg-src="figures/fig31_cp29a_accumulation.svg" data-svg-id="fig26_cp29a_accumulation">
+
+</div>
+<div class="fragment" data-fragment-index="1" data-fig26-mode="1">
+
+</div>
+</section>
+<section id="detecting-post-transcriptional-regulation" class="slide level2 figure-slide">
+<h2>Detecting Post-Transcriptional Regulation</h2>
+<div class="png-stage">
+<p><img data-src="figures/fig32_editing.png"></p>
+</div>
+</section>
+<section id="take-home" class="slide level2">
+<h2>Take Home</h2>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank You</h2>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script src="assets/js/svg-loader.js"></script>
+    <script src="assets/js/svg-animator.js"></script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
