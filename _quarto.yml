@@ -1,6 +1,9 @@
 project:
+  type: website
   title: "Recovering Biological Inference from Non-Standard RNA-Seq"
-  output-dir: "."
+  output-dir: "_site"
+  render:
+    - index.qmd
 
 format:
   revealjs:
