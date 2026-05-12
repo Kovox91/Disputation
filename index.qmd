@@ -1,19 +1,35 @@
 ---
 title: "Recovering Biological Inference from Non-Standard RNA-Seq"
-subtitle: "Mitochondrial sRNA states in Toxoplasma gondii and plastid-associated programs in the Arabidopsis thaliana shoot apex"
+subtitle: "Mitochondrial sRNA states in *Toxoplasma gondii* and plastid-associated programs in the *Arabidopsis thaliana* shoot apex"
 author: "Sascha Maschmann"
 date: "02.06.2026"
 ---
 
 ## Welcome
-Happy to be here  
-Enjoy your Drink, this is supposed to be fun!
 
-<!-- Toxo -->
-## Toxoplasma Intro Slide
+## Welcome -- Enjoy your drink, this is supposed to be fun!
 
 
-## Toxo Phenotypes {.figure-slide}
+::: {.fragment}
+* *Toxoplasma gondii* mitochondria sRNA seq
+  - Putative RNA-binding protein mRSiC
+  - Putative RNA helicase mRHel1
+:::
+::: {.fragment}
+
+* *Arabidopsis thaliana* Single-cell RNA-Seq
+  - Plastid-associated programs in the shoot apical meristem
+  - CP29A in early Development
+
+:::
+
+::: {.fragment}
+Recovering biological inference from non-standard RNA-Seq data.
+:::
+
+
+
+## mRHel1 and mRSiC as Entrypoints into Mitochondrial RNA Homeostasis {.figure-slide}
 
 ::: {.image-sequence-three}
 ::: {.sequence-item .fragment data-fragment-index="1"}
@@ -29,12 +45,22 @@ Enjoy your Drink, this is supposed to be fun!
 [Nikiforos Drakoulis, BioRxive 2026]{.fig-attribution .fragment data-fragment-index="1" style="bottom: 2em;"}
 [Zala Gluhic, unpublished]{.fig-attribution .fragment data-fragment-index="3"}
 
-## Default Pipeline Approach
-mRNA-Seq derived  
-delivered DEGs  
-not possible to proof with northern blots
 
-## Feature Independence {.figure-slide}
+## The *T. gongii* Mitoribosome is divergent {.figure-slide}
+::: {.png-stage}
+![](figures/toxo_mitoribosome.png)
+:::
+[Wang et al., 2024]{.fig-attribution}
+
+## Initial Analysis Pipeline Approach
+::: {.incremental}
+* RNA-Sequencing of mitochondrial sRNA
+* mRNA-Seq derived analysis pipeline
+* orthogonal validation failed to reproduce seq-derived accumulation patterns 
+:::
+
+## Excourse: RNA-Seq Assumptions
+### Feature Independence {.figure-slide}
 
 ::: {.svg-stage data-svg-src="figures/fig04_feature_independence.svg" data-svg-id="fig01_1_featureIndependence"}
 :::
@@ -42,7 +68,8 @@ not possible to proof with northern blots
 ::: {.fragment .fig-focus-toggle data-fragment-index="1" data-anim-add-target=".fig011-met" data-anim-add-class="is-greyed" data-anim-remove-target=".fig011-violated" data-anim-remove-class="is-greyed"}
 :::
 
-## Stable Composition {.figure-slide}
+## Excourse: RNA-Seq Assumptions
+### Stable Composition {.figure-slide}
 
 ::: {.svg-stage data-svg-src="figures/fig05_stable_composition.svg" data-svg-id="fig01_2_stableComposition"}
 :::
@@ -50,7 +77,8 @@ not possible to proof with northern blots
 ::: {.fragment .fig-focus-toggle data-fragment-index="1" data-anim-add-target=".fig012-met" data-anim-add-class="is-greyed" data-anim-remove-target=".fig012-violated" data-anim-remove-class="is-greyed"}
 :::
 
-## Transcript Interpretability {.figure-slide}
+## Excourse: RNA-Seq Assumptions
+### Transcript Interpretability {.figure-slide}
 
 ::: {.svg-stage data-svg-src="figures/fig06_transcript_interpretability.svg" data-svg-id="fig01_3_transcriptInterpretability"}
 :::
@@ -75,15 +103,7 @@ not possible to proof with northern blots
 
 ## New Pipeline Overview
 
-this is stable
-
-::: {.fragment}
-This appears on click
-:::
-
-::: {.fragment}
-* This appears on click
-:::
+TODO
 
 <!-- ## Normalisation Effects {.figure-slide}
 
