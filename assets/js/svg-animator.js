@@ -7,7 +7,6 @@
   const FIG23_GREEN_COLORS = new Set(["#009900", "#006600", "#336633"]);
   const FIG23_ORANGE_COLORS = new Set(["#cc6633", "#ff9933", "#ff6600"]);
   const FIG23_BLUE_COLORS = new Set(["#0099ff", "#0066cc", "#3399cc"]);
-  const FIG26_HIGHLIGHT_COLORS = new Set(["#336633", "#ff6600"]);
   let cachedMutedOpacity = null;
 
   function getMutedOpacity() {
@@ -439,9 +438,14 @@
       return;
     }
 
-    const fill = (node.style?.getPropertyValue("fill") || node.getAttribute("fill") || "").trim();
-    const stroke = (node.style?.getPropertyValue("stroke") || node.getAttribute("stroke") || "").trim();
-    const opacity = (node.style?.getPropertyValue("opacity") || node.getAttribute("opacity") || "").trim();
+    const styleAttr = node.getAttribute("style") || "";
+    const fillFromStyleAttr = (styleAttr.match(/(?:^|;)\s*fill\s*:\s*([^;]+)/i) || [])[1] || "";
+    const strokeFromStyleAttr = (styleAttr.match(/(?:^|;)\s*stroke\s*:\s*([^;]+)/i) || [])[1] || "";
+    const opacityFromStyleAttr = (styleAttr.match(/(?:^|;)\s*opacity\s*:\s*([^;]+)/i) || [])[1] || "";
+
+    const fill = (node.style?.getPropertyValue("fill") || node.getAttribute("fill") || fillFromStyleAttr || "").trim();
+    const stroke = (node.style?.getPropertyValue("stroke") || node.getAttribute("stroke") || strokeFromStyleAttr || "").trim();
+    const opacity = (node.style?.getPropertyValue("opacity") || node.getAttribute("opacity") || opacityFromStyleAttr || "").trim();
     node.setAttribute("data-fig26-original-fill", fill);
     node.setAttribute("data-fig26-original-stroke", stroke);
     node.setAttribute("data-fig26-original-opacity", opacity);
@@ -461,41 +465,48 @@
 
     svg.dataset.fig26Mode = String(mode);
 
-    const nodes = Array.from(svg.querySelectorAll("*"));
+    const mutedGroup = svg.getElementById("muted");
+    if (!mutedGroup) {
+      return;
+    }
+
+    cacheFigure26NodeState(mutedGroup);
+    const nodes = Array.from(mutedGroup.querySelectorAll("*"));
     const neutral = DEFAULT_FIG26_NEUTRAL;
     const mutedOpacity = getMutedOpacity();
+
+    if (mode >= 1) {
+      mutedGroup.style.opacity = mutedOpacity;
+    } else {
+      const groupOriginalOpacity = mutedGroup.getAttribute("data-fig26-original-opacity") || "";
+      if (groupOriginalOpacity) {
+        mutedGroup.style.opacity = groupOriginalOpacity;
+      } else {
+        mutedGroup.style.removeProperty("opacity");
+      }
+    }
 
     nodes.forEach((node) => {
       cacheFigure26NodeState(node);
       const originalFill = (node.getAttribute("data-fig26-original-fill") || "").toLowerCase();
       const originalStroke = (node.getAttribute("data-fig26-original-stroke") || "").toLowerCase();
-      const matches = FIG26_HIGHLIGHT_COLORS.has(originalFill) || FIG26_HIGHLIGHT_COLORS.has(originalStroke);
-
-      if (!matches) {
-        return;
-      }
 
       if (mode >= 1) {
-        if (originalFill) {
-          node.style.fill = originalFill;
-        }
-        if (originalStroke) {
-          node.style.stroke = originalStroke;
-        }
-        const originalOpacity = node.getAttribute("data-fig26-original-opacity") || "";
-        if (originalOpacity) {
-          node.style.opacity = originalOpacity;
-        } else {
-          node.style.removeProperty("opacity");
-        }
-      } else {
         if (originalFill) {
           node.style.fill = neutral;
         }
         if (originalStroke) {
           node.style.stroke = neutral;
         }
-        node.style.opacity = mutedOpacity;
+        node.style.removeProperty("opacity");
+      } else {
+        if (originalFill) {
+          node.style.fill = originalFill;
+        }
+        if (originalStroke) {
+          node.style.stroke = originalStroke;
+        }
+        node.style.removeProperty("opacity");
       }
     });
   }
