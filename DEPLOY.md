@@ -1,85 +1,127 @@
-# GitHub Pages Deployment Guide
+# GitHub Pages Deployment
 
-## Overview
-This Quarto presentation is configured for easy hosting on GitHub Pages with embedded resources for offline access.
+Your presentation is configured for automatic deployment to GitHub Pages using Quarto's built-in publishing tools.
+
+## Current Configuration
+
+- **Repository**: https://github.com/Kovox91/Disputation
+- **Publishing target**: GitHub Pages (`gh-pages` branch)
+- **Live URL**: https://Kovox91.github.io/Disputation/
 
 ## Prerequisites
-- Git installed on your machine
-- A GitHub repository (create one at https://github.com/new if you haven't already)
 
-## Setup Steps
+- Git installed
+- Quarto installed (https://quarto.org/docs/get-started/)
+- Repository already connected to GitHub
 
-### 1. Initialize Git (if not already done)
+## Deployment Steps
+
+### One-Command Deployment (Recommended)
+
+Deploy directly from your local machine:
+
 ```bash
 cd /home/sascha/data/Documents/dissertation/presentation
-git init
-git add .
-git commit -m "Initial commit: presentation setup for GitHub Pages"
+quarto publish gh-pages
 ```
 
-### 2. Add Remote Repository
-Replace `USERNAME` and `REPO_NAME` with your actual GitHub username and repository name:
-```bash
-git remote add origin https://github.com/USERNAME/REPO_NAME.git
-git branch -M main
-git push -u origin main
+This will:
+1. Render the presentation (`index.html` and supporting files)
+2. Create/update a `gh-pages` branch
+3. Push to GitHub
+4. Activate GitHub Pages automatically
+
+Your presentation will be live within 1-2 minutes at:
+```
+https://Kovox91.github.io/Disputation/
 ```
 
-### 3. Enable GitHub Pages
+### Manual Alternative
 
-Go to your repository on GitHub:
-1. Navigate to **Settings** → **Pages**
-2. Under "Build and deployment", select:
-   - **Source**: Deploy from a branch
-   - **Branch**: main (or your preferred branch)
-   - **Folder**: / (root)
-3. Click **Save**
-
-GitHub Pages will build and your presentation will be available at:
-```
-https://USERNAME.github.io/REPO_NAME/
-```
-
-## Updating Your Presentation
-
-After making changes:
+If you prefer manual control:
 
 ```bash
 # Render the presentation
 quarto render
 
-# Commit and push changes
+# Stage, commit, and push all files
 git add .
-git commit -m "Update: your changes description"
-git push
+git commit -m "Update presentation"
+git push origin main
 ```
 
-The site updates automatically within a few minutes.
+Then enable GitHub Pages in repository settings (Settings → Pages → Source: main).
+
+## Updating Your Presentation
+
+After making changes to your slides or figures:
+
+```bash
+# Test locally first
+quarto preview
+
+# Once satisfied, deploy
+quarto publish gh-pages
+```
 
 ## Technical Details
 
-- **Embedded Resources**: The Quarto config uses `embed-resources: true`, meaning all CSS, fonts, and scripts are embedded in `index.html`
-- **No Jekyll Processing**: The `.nojekyll` file prevents GitHub Pages from processing the site with Jekyll, avoiding conflicts
-- **Font Handling**: STIX Two Text fonts are embedded in the CSS, ensuring consistent typography
+### Resource Handling
+
+- **SVG Figures**: Loaded dynamically by JavaScript (`assets/js/svg-loader.js`)
+- **Fonts**: Self-hosted in `assets/fonts/`
+- **Styles**: STIX Two Text scientific theme (`assets/styles/theme.scss`)
+- **Embedding**: Set to `embed-resources: false` to allow dynamic SVG loading and better performance
+
+### Directory Structure
+
+```
+.
+├── _quarto.yml            # Quarto configuration
+├── _publish.yml           # Publishing targets
+├── index.qmd              # Presentation source
+├── index.html             # Rendered output (generated)
+├── index_files/           # Supporting assets (generated)
+├── assets/
+│   ├── fonts/             # STIX Two Text fonts
+│   ├── js/                # SVG animation scripts
+│   └── styles/            # Custom theme (SCSS)
+├── figures/               # SVG and image files
+└── .nojekyll              # Tell GitHub Pages to skip Jekyll
+```
+
+### .nojekyll File
+
+The `.nojekyll` file prevents GitHub Pages from processing with Jekyll, which would interfere with the presentation.
 
 ## Troubleshooting
 
-### Fonts Not Loading
-- Fonts are embedded in the compiled CSS. If they don't appear, check that your browser hasn't cached an older version (Ctrl+Shift+R to hard refresh)
+### "quarto publish gh-pages" fails
 
-### Styles Not Applying
-- The theme and styles are embedded in `index.html`. Hard refresh your browser if changes don't appear immediately
+**Authentication error?**
+- Ensure git is configured: `git config user.email` and `git config user.name`
+- Verify repository access: `git remote -v`
+- Try: `git push origin main` to test connectivity
 
-### GitHub Pages Not Updating
-- Check the "Actions" tab in your GitHub repository to see if the deployment succeeded
-- Clear your browser cache (Ctrl+Shift+R or Cmd+Shift+R)
+**Other error?**
+- Verify Quarto is installed: `quarto --version`
+- Check that files are tracked: `git status`
+- Ensure no uncommitted changes: `git add . && git commit -m "Save changes"`
 
-## Local Preview
+### Presentation doesn't load after deployment
 
-To preview changes locally before pushing:
+- Hard refresh browser (Ctrl+Shift+R or Cmd+Shift+R) to clear cache
+- Check GitHub Actions tab to verify deployment succeeded
+- Verify files are in git: `git log --oneline` (should show recent commits)
 
-```bash
-quarto preview
-```
+### Fonts not displaying correctly
 
-This opens a live preview at `http://localhost:5173` (or similar port shown in terminal).
+- Fonts are served from `assets/fonts/`
+- Check browser console (F12) for 404 errors
+- Verify `theme.scss` has correct paths
+
+### Styles or animations not working
+
+- Hard refresh browser cache (Ctrl+Shift+R)
+- Verify `svg-loader.js` and `svg-animator.js` loaded (check Network tab in browser console)
+- Ensure figure files exist in `figures/` directory

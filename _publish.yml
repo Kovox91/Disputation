@@ -1,0 +1,7 @@
+- source: "."
+  quarto-pub:
+    id: "e7dbecac-2b2c-4fc5-9e34-d96aef3b3881"
+
+- source: "."
+  gh-pages:
+    branch: "gh-pages"

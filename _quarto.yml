@@ -1,5 +1,6 @@
 project:
-  title: "Interactive Figure Animation Test"
+  title: "Recovering Biological Inference from Non-Standard RNA-Seq"
+  output-dir: "."
 
 format:
   revealjs:
@@ -19,7 +20,7 @@ format:
       - assets/styles/theme.scss
     include-after-body:
       - assets/includes/after-body.html
-    embed-resources: true
+    embed-resources: false
 
 execute:
   echo: false

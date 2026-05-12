@@ -1,6 +1,6 @@
-# Interactive Quarto Reveal.js Testbed
+# Recovering Biological Inference from Non-Standard RNA-Seq
 
-This folder contains a Quarto + Reveal.js presentation prepared for interactive animation of dissertation SVG figures.
+A Quarto + Reveal.js dissertation presentation with interactive animations of SVG figures.
 
 ## Included
 
@@ -24,18 +24,32 @@ To avoid network dependency and ensure typography matches your figures:
 
 The stylesheet prefers local font files and falls back to locally installed STIX Two Text.
 
-## Run locally
+## Quick Start
 
+### Local Preview
 Install Quarto first, then from this folder:
 
 ```bash
 quarto preview
 ```
 
-Render static output:
+This opens a live preview at `http://localhost:5173` (or similar).
 
+### Render Static Output
 ```bash
 quarto render
+```
+
+This generates `index.html` and supporting files in the current directory.
+
+### Deploy to GitHub Pages
+```bash
+quarto publish gh-pages
+```
+
+This automatically builds and deploys to the `gh-pages` branch. The presentation will be available at:
+```
+https://Kovox91.github.io/Disputation/
 ```
 
 ## Animation workflow
