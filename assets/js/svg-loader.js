@@ -175,6 +175,48 @@
   const FIG23_ID = "fig23_program_heatmap";
   const FIG23_NEUTRAL_COLOR = "#cccccc";
   const FIG23_GROUP_IDS = ["stage1", "stage2", "stage3", "stage4", "domains", "grey1", "grey2", "grey3", "grey4"];
+  const SVG_VIEWBOX_X_PAD_RATIO = 0.03;
+
+  function parseViewBox(svgRoot) {
+    if (!svgRoot) {
+      return null;
+    }
+
+    const viewBox = svgRoot.getAttribute("viewBox");
+    if (viewBox) {
+      const values = viewBox
+        .trim()
+        .split(/[\s,]+/)
+        .map((value) => Number.parseFloat(value));
+
+      if (values.length === 4 && values.every((value) => Number.isFinite(value))) {
+        const [x, y, width, height] = values;
+        if (width > 0 && height > 0) {
+          return { x, y, width, height };
+        }
+      }
+    }
+
+    const width = Number.parseFloat(svgRoot.getAttribute("width") || "");
+    const height = Number.parseFloat(svgRoot.getAttribute("height") || "");
+    if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) {
+      return null;
+    }
+
+    return { x: 0, y: 0, width, height };
+  }
+
+  function normalizeSvgViewBox(svgRoot) {
+    const viewBox = parseViewBox(svgRoot);
+    if (!viewBox) {
+      return;
+    }
+
+    const padX = viewBox.width * SVG_VIEWBOX_X_PAD_RATIO;
+    const normalizedX = viewBox.x - padX;
+    const normalizedWidth = viewBox.width + padX * 2;
+    svgRoot.setAttribute("viewBox", `${normalizedX} ${viewBox.y} ${normalizedWidth} ${viewBox.height}`);
+  }
 
   function prepareFacetAnimation(stage, svgRoot) {
     if (!stage || !svgRoot || !FACET_ANIM_IDS.has(stage.dataset.svgId)) {
@@ -411,6 +453,7 @@
 
       svg.classList.add("embedded-svg");
       svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      normalizeSvgViewBox(svg);
 
       stage.innerHTML = "";
       const importedSvg = document.importNode(svg, true);
