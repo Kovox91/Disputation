@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="160mm"
+   height="68.483009mm"
+   viewBox="0 0 160 68.48301"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="fig01-2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.91757856"
+     inkscape:cx="198.89305"
+     inkscape:cy="149.85093"
+     inkscape:window-width="1128"
+     inkscape:window-height="1342"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-49.477081,-155.83958)">
+    <rect
+       style="fill:#ffffff;fill-opacity:0.75;stroke:none;stroke-width:0.176;stroke-linecap:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect427"
+       width="160"
+       height="68.483009"
+       x="49.477081"
+       y="-224.32259"
+       inkscape:export-filename="StableComposition.png"
+       inkscape:export-xdpi="1200"
+       inkscape:export-ydpi="1200"
+       transform="scale(1,-1)" />
+    <text
+       class="fig012-met"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="179.25635"
+       y="175.08212"
+       id="text95"
+       inkscape:export-filename="StableComposition.png"
+       inkscape:export-xdpi="600"
+       inkscape:export-ydpi="600"><tspan
+         sodipodi:role="line"
+         id="tspan94"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+         x="179.25635"
+         y="175.08212">Assumption</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+         x="179.25635"
+         y="179.49185"
+         id="tspan95"
+         dy="-1.0092235">met</tspan></text>
+    <g
+       id="g16"
+       transform="translate(63.592031,88.775866)">
+      <g
+         class="fig012-met"
+         id="g9">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           d="m 69.918137,73.907635 v 25.29837 h 33.008613"
+           id="path41" />
+        <rect
+           style="fill:#4c78a8;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect42"
+           width="3.5962691"
+           height="9.4902649"
+           x="71.410492"
+           y="89.583427" />
+        <rect
+           style="fill:#8c6a93;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect43"
+           width="3.5962691"
+           height="10"
+           x="76.162712"
+           y="89.073662" />
+        <rect
+           style="fill:#009e73;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect44"
+           width="3.5962691"
+           height="9.4902649"
+           x="80.914925"
+           y="89.583427" />
+        <rect
+           style="fill:#4c78a8;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect45"
+           width="3.5962691"
+           height="9.4899998"
+           x="88.333687"
+           y="89.583672" />
+        <rect
+           style="fill:#8c6a93;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect46"
+           width="3.5962691"
+           height="10"
+           x="93.085899"
+           y="89.073662" />
+        <rect
+           style="fill:#009e73;fill-opacity:1;stroke:none;stroke-width:0.264582;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect47"
+           width="3.5962691"
+           height="22.133793"
+           x="97.838112"
+           y="76.939896" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="76.696136"
+           y="102.11698"
+           id="text75"><tspan
+             sodipodi:role="line"
+             id="tspan75"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="76.696136"
+             y="102.11698">A</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="93.792191"
+           y="102.11698"
+           id="text76"><tspan
+             sodipodi:role="line"
+             id="tspan76"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="93.792191"
+             y="102.11698">B</tspan></text>
+      </g>
+      <g
+         class="fig012-violated is-greyed"
+         id="g15">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           d="m 69.918137,104.26122 v 25.29837 h 33.008613"
+           id="path53" />
+        <rect
+           style="fill:#4c78a8;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect54"
+           width="3.5962691"
+           height="10.203894"
+           x="71.410561"
+           y="119.22337" />
+        <rect
+           style="fill:#8c6a93;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect55"
+           width="3.5962691"
+           height="9.5922117"
+           x="76.162773"
+           y="119.83506" />
+        <rect
+           style="fill:#009e73;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect56"
+           width="3.5962691"
+           height="10.407788"
+           x="80.914986"
+           y="119.01946" />
+        <rect
+           style="fill:#4c78a8;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect57"
+           width="3.5962691"
+           height="10.509735"
+           x="88.333755"
+           y="118.91752" />
+        <rect
+           style="fill:#8c6a93;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect58"
+           width="3.5962691"
+           height="9.4902649"
+           x="93.085899"
+           y="119.93699" />
+        <rect
+           style="fill:#009e73;fill-opacity:1;stroke:none;stroke-width:0.264582;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect59"
+           width="3.596"
+           height="10.509735"
+           x="97.838181"
+           y="118.91752" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="76.696198"
+           y="132.47101"
+           id="text81"><tspan
+             sodipodi:role="line"
+             id="tspan81"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="76.696198"
+             y="132.47101">A</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="93.792191"
+           y="132.47101"
+           id="text82"><tspan
+             sodipodi:role="line"
+             id="tspan82"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="93.792191"
+             y="132.47101">B</tspan></text>
+      </g>
+      <g
+         class="fig012-met"
+         id="g14">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="38.873814"
+           y="102.11698"
+           id="text73"><tspan
+             sodipodi:role="line"
+             id="tspan73"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="38.873814"
+             y="102.11698">A</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="55.969875"
+           y="102.11698"
+           id="text74"><tspan
+             sodipodi:role="line"
+             id="tspan74"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="55.969875"
+             y="102.11698">B</tspan></text>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           d="m 32.095816,73.907635 v 25.29837 h 33.008613"
+           id="path1" />
+        <rect
+           style="fill:#4c78a8;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect3"
+           width="3.5962691"
+           height="9.2927227"
+           x="33.588177"
+           y="89.780968" />
+        <rect
+           style="fill:#8c6a93;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect4"
+           width="3.5962691"
+           height="11.535556"
+           x="38.340389"
+           y="87.538116" />
+        <rect
+           style="fill:#009e73;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect5"
+           width="3.5962691"
+           height="10"
+           x="43.092606"
+           y="89.073662" />
+        <rect
+           style="fill:#4c78a8;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect39"
+           width="3.5962691"
+           height="10.590295"
+           x="50.511375"
+           y="88.483391" />
+        <rect
+           style="fill:#8c6a93;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect40"
+           width="3.5962691"
+           height="13.409827"
+           x="55.263588"
+           y="85.663841" />
+        <rect
+           style="fill:#009e73;fill-opacity:1;stroke:none;stroke-width:0.264582;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect41"
+           width="3.5962691"
+           height="24.584764"
+           x="60.015797"
+           y="74.488914" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="-91.959618"
+           y="31.07115"
+           id="text83"
+           transform="rotate(-90)"><tspan
+             sodipodi:role="line"
+             id="tspan83"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="-91.959618"
+             y="31.07115">Counts</tspan></text>
+      </g>
+      <g
+         class="fig012-violated is-greyed"
+         id="g11">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           d="m 32.095816,104.26122 v 25.29837 h 33.008613"
+           id="path47" />
+        <rect
+           style="fill:#4c78a8;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect48"
+           width="3.5962691"
+           height="16.123169"
+           x="33.588177"
+           y="113.30408" />
+        <rect
+           style="fill:#8c6a93;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect49"
+           width="3.5962691"
+           height="14.578725"
+           x="38.340389"
+           y="114.84855" />
+        <rect
+           style="fill:#009e73;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect50"
+           width="3.5962691"
+           height="16.005978"
+           x="43.092606"
+           y="113.42129" />
+        <rect
+           style="fill:#4c78a8;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect51"
+           width="3.5962691"
+           height="7.7635183"
+           x="50.511375"
+           y="121.66373" />
+        <rect
+           style="fill:#8c6a93;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect52"
+           width="3.5962691"
+           height="5.9284735"
+           x="55.263588"
+           y="123.49879" />
+        <rect
+           style="fill:#009e73;fill-opacity:1;stroke:none;stroke-width:0.264582;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           id="rect53"
+           width="3.5962691"
+           height="8.2732525"
+           x="60.015797"
+           y="121.15401" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="38.873814"
+           y="132.47101"
+           id="text79"><tspan
+             sodipodi:role="line"
+             id="tspan79"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="38.873814"
+             y="132.47101">A</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="55.969875"
+           y="132.47101"
+           id="text80"><tspan
+             sodipodi:role="line"
+             id="tspan80"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="55.969875"
+             y="132.47101">B</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+           x="-122.3132"
+           y="31.07115"
+           id="text84"
+           transform="rotate(-90)"><tspan
+             sodipodi:role="line"
+             id="tspan84"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+             x="-122.3132"
+             y="31.07115">Counts</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         x="45.215221"
+         y="72.629951"
+         id="text85"><tspan
+           sodipodi:role="line"
+           id="tspan85"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+           x="45.215221"
+           y="72.629951">Raw</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         x="77.618866"
+         y="72.629951"
+         id="text86"><tspan
+           sodipodi:role="line"
+           id="tspan86"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+           x="77.618866"
+           y="72.629951">Normalized</tspan></text>
+    </g>
+    <text
+       class="fig012-violated is-greyed"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="179.31279"
+       y="205.44084"
+       id="text91"><tspan
+         sodipodi:role="line"
+         id="tspan90"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+         x="179.31279"
+         y="205.44084">Assumption</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text';stroke-width:0.264583"
+         x="179.31279"
+         y="209.85057"
+         id="tspan91"
+         dy="-1.0092235">violated</tspan></text>
+  </g>
+</svg>

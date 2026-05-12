@@ -1,0 +1,474 @@
+/*-- scss:defaults --*/
+
+/* Local font first; if not bundled, use locally installed STIX Two Text. */
+@font-face {
+  font-family: "STIX Two Text";
+  src: local("STIX Two Text"),
+       url("../fonts/STIXTwoText-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "STIX Two Text";
+  src: local("STIX Two Text Italic"),
+       local("STIX Two Text"),
+       url("../fonts/STIXTwoText-Italic-VariableFont_wght.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --bg-main: #ffffff;
+  --bg-panel: #ffffff;
+  --text-main: #2a2d2f;
+  --text-soft: #5f686e;
+  --heading: #3a4246;
+  --line-soft: #cfcac1;
+  --accent-muted: #7d8e92;
+  --fig-muted-fill: #cccccc;
+  --fig-muted-opacity: 0.28;
+  --fig-muted-filter: grayscale(1) saturate(0.1);
+  --anim-duration: 0.6s;
+  --anim-ease: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --r-main-font: "STIX Two Text", "STIXGeneral", "Times New Roman", serif;
+  --r-heading-font: "STIX Two Text", "STIXGeneral", "Times New Roman", serif;
+}
+
+/*-- scss:rules --*/
+
+.reveal {
+  font-family: "STIX Two Text", "STIXGeneral", "Times New Roman", serif;
+  color: var(--text-main);
+  font-size: 30px;
+  background: radial-gradient(circle at 20% 15%, #f7f5f1 0%, var(--bg-main) 45%, #e5e2da 100%);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: "STIX Two Text", "STIXGeneral", "Times New Roman", serif;
+  color: var(--heading);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.4em;
+}
+
+.reveal h1 {
+  font-size: 1.55em;
+}
+
+.reveal h2 {
+  font-size: 1.25em;
+}
+
+.reveal p,
+.reveal li {
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.reveal small,
+.reveal .muted {
+  color: var(--text-soft);
+}
+
+.reveal strong {
+  color: #374046;
+  font-weight: 600;
+}
+
+.reveal section.figure-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0.35em;
+}
+
+.reveal .slides section .fragment {
+  transition-duration: var(--anim-duration);
+  transition-timing-function: var(--anim-ease);
+}
+
+/* Keep slide-to-slide reveal transitions in lockstep with fragment timing. */
+.reveal .slides > section,
+.reveal .slides > section > section,
+.reveal > .backgrounds .slide-background,
+.reveal.has-parallax-background .backgrounds {
+  transition-duration: var(--anim-duration) !important;
+}
+
+.svg-stage,
+.png-stage {
+  width: 100%;
+  height: 72vh;
+  border: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--bg-panel) 84%, #ffffff 16%);
+  border-radius: 8px;
+  box-shadow: 0 2px 18px rgba(38, 43, 48, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.png-stage {
+  height: auto;
+  max-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-stage svg,
+.png-stage img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.png-stage img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 72vh;
+}
+
+.image-sequence-three {
+  width: 100%;
+  height: 72vh;
+  border: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--bg-panel) 84%, #ffffff 16%);
+  border-radius: 8px;
+  box-shadow: 0 2px 18px rgba(38, 43, 48, 0.08);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  padding: 0.45rem;
+}
+
+.image-sequence-three img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  align-self: center;
+  justify-self: center;
+  border-radius: 4px;
+}
+
+.fig6-step-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+
+.fig6-step-controls .fragment,
+.fig07-step-controls .fragment,
+.fig-focus-toggle {
+  font-size: 0.46em;
+  letter-spacing: 0.02em;
+  color: var(--text-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  padding: 0.08rem 0.35rem;
+  min-width: 1.05rem;
+  min-height: 0.52rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.fig6-step-controls .fragment.visible,
+.fig07-step-controls .fragment.visible,
+.fig-focus-toggle.visible {
+  color: var(--heading);
+  border-color: color-mix(in srgb, var(--accent-muted) 62%, var(--line-soft) 38%);
+}
+
+.svg-stage[data-load-status="loading"]::before,
+.svg-stage[data-load-status="error"]::before {
+  content: attr(data-load-message);
+  color: var(--text-soft);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.78em;
+}
+
+/* Generic classes for fragment-driven animation hooks. */
+.is-highlighted {
+  filter: drop-shadow(0 0 4px rgba(67, 85, 93, 0.45));
+  stroke-width: max(1.6px, 0.07em);
+}
+
+.is-muted,
+.is-greyed {
+  opacity: var(--fig-muted-opacity);
+  fill: var(--fig-muted-fill) !important;
+  stroke: var(--fig-muted-fill) !important;
+}
+
+.is-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.fig-attribution {
+  position: absolute;
+  bottom: 0.85em;
+  right: 0.75em;
+  font-size: 0.45em;
+  color: rgba(36, 36, 36, 0.822);
+  font-style: italic;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Triptych override: keep panels side-by-side and center each image vertically. */
+.image-sequence-three > .sequence-item {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-sequence-three > .sequence-item > p {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-sequence-three > .sequence-item img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Figure focus helper: subdued grayscale emphasis for out-of-focus content. */
+.is-greyed {
+  transition: opacity var(--anim-duration) var(--anim-ease),
+              fill var(--anim-duration) var(--anim-ease),
+              stroke var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig06-ready #g1.is-greyed,
+svg.embedded-svg.fig06-ready #g2.is-greyed {
+  opacity: var(--fig-muted-opacity);
+  transition: opacity var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig06-ready #g1.is-greyed *,
+svg.embedded-svg.fig06-ready #g2.is-greyed * {
+  fill: var(--fig-muted-fill) !important;
+  stroke: var(--fig-muted-fill) !important;
+  transition: fill var(--anim-duration) var(--anim-ease),
+              stroke var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig00-ready #low_deviation,
+svg.embedded-svg.fig00-ready #high_deviation {
+  transition: opacity var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig05-ready #mRNA,
+svg.embedded-svg.fig05-ready #rRNA,
+svg.embedded-svg.fig05-ready #sRNA {
+  transition: opacity var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig10-ready #stage1.is-greyed,
+svg.embedded-svg.fig10-ready #stage2.is-greyed {
+  opacity: var(--fig-muted-opacity);
+  transition: opacity var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig10-ready #stage1.is-greyed *,
+svg.embedded-svg.fig10-ready #stage2.is-greyed * {
+  fill: var(--fig-muted-fill) !important;
+  stroke: var(--fig-muted-fill) !important;
+  transition: fill var(--anim-duration) var(--anim-ease),
+              stroke var(--anim-duration) var(--anim-ease);
+}
+
+.fig07-step-controls {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+/* Hide visual step markers while preserving fragment sequencing. */
+.fig6-step-controls,
+.fig07-step-controls,
+.fig-focus-toggle {
+  display: none !important;
+}
+
+/* Figure 17 teal boxplot highlight */
+svg.embedded-svg.fig17-ready #facet1,
+svg.embedded-svg.fig17-ready #facet2,
+svg.embedded-svg.fig17-ready #facet3,
+svg.embedded-svg.fig17-ready #facet4 {
+  opacity: var(--fig-muted-opacity);
+  filter: var(--fig-muted-filter);
+  transition: opacity var(--anim-duration) var(--anim-ease),
+              filter var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig17-ready[data-fig17-mode="1"] #facet1,
+svg.embedded-svg.fig17-ready[data-fig17-mode="2"] #facet1,
+svg.embedded-svg.fig17-ready[data-fig17-mode="3"] #facet1,
+svg.embedded-svg.fig17-ready[data-fig17-mode="4"] #facet1,
+svg.embedded-svg.fig17-ready[data-fig17-mode="2"] #facet2,
+svg.embedded-svg.fig17-ready[data-fig17-mode="3"] #facet2,
+svg.embedded-svg.fig17-ready[data-fig17-mode="4"] #facet2,
+svg.embedded-svg.fig17-ready[data-fig17-mode="3"] #facet3,
+svg.embedded-svg.fig17-ready[data-fig17-mode="4"] #facet3,
+svg.embedded-svg.fig17-ready[data-fig17-mode="4"] #facet4 {
+  opacity: 1;
+  filter: var(--fig-muted-filter);
+}
+
+svg.embedded-svg.fig17-ready[data-fig17-mode="5"] #facet1,
+svg.embedded-svg.fig17-ready[data-fig17-mode="5"] #facet2,
+svg.embedded-svg.fig17-ready[data-fig17-mode="5"] #facet3,
+svg.embedded-svg.fig17-ready[data-fig17-mode="5"] #facet4 {
+  opacity: 1;
+  filter: none;
+}
+
+svg.embedded-svg.fig17-ready .fig17-teal {
+  fill: var(--fig-muted-fill) !important;
+  transition: fill var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig17-ready[data-fig17-mode="5"] .fig17-teal {
+  fill: #009e73 !important;
+}
+
+/* Figure 19 facet reveal + cluster label */
+svg.embedded-svg.fig19-ready #facet1,
+svg.embedded-svg.fig19-ready #facet2,
+svg.embedded-svg.fig19-ready #facet3,
+svg.embedded-svg.fig19-ready #facet4 {
+  opacity: var(--fig-muted-opacity);
+  filter: var(--fig-muted-filter);
+  transition: opacity var(--anim-duration) var(--anim-ease),
+              filter var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig19-ready #cluster_label {
+  opacity: 0;
+  transition: opacity var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.fig19-ready[data-fig19-mode="1"] #facet1,
+svg.embedded-svg.fig19-ready[data-fig19-mode="2"] #facet1,
+svg.embedded-svg.fig19-ready[data-fig19-mode="3"] #facet1,
+svg.embedded-svg.fig19-ready[data-fig19-mode="4"] #facet1,
+svg.embedded-svg.fig19-ready[data-fig19-mode="5"] #facet1,
+svg.embedded-svg.fig19-ready[data-fig19-mode="2"] #facet2,
+svg.embedded-svg.fig19-ready[data-fig19-mode="3"] #facet2,
+svg.embedded-svg.fig19-ready[data-fig19-mode="4"] #facet2,
+svg.embedded-svg.fig19-ready[data-fig19-mode="5"] #facet2,
+svg.embedded-svg.fig19-ready[data-fig19-mode="3"] #facet3,
+svg.embedded-svg.fig19-ready[data-fig19-mode="4"] #facet3,
+svg.embedded-svg.fig19-ready[data-fig19-mode="5"] #facet3,
+svg.embedded-svg.fig19-ready[data-fig19-mode="4"] #facet4,
+svg.embedded-svg.fig19-ready[data-fig19-mode="5"] #facet4 {
+  opacity: 1;
+  filter: none;
+}
+
+svg.embedded-svg.fig19-ready[data-fig19-mode="5"] #cluster_label {
+  opacity: 1;
+}
+
+/* Figure 22.02 targeted group focus */
+svg.embedded-svg.fig2202-ready .fig2202-muted {
+  opacity: var(--fig-muted-opacity);
+  filter: var(--fig-muted-filter);
+  transition: opacity var(--anim-duration) var(--anim-ease),
+              filter var(--anim-duration) var(--anim-ease);
+}
+
+/* Facet animation (fig07, fig09) - groups: points_f1-f3, labels_f1-f3 */
+
+/* Initial state: all points grey, all labels hidden */
+svg.embedded-svg.facet-anim-ready #points_f1,
+svg.embedded-svg.facet-anim-ready #points_f2,
+svg.embedded-svg.facet-anim-ready #points_f3 {
+  opacity: 0.15;
+  filter: grayscale(1) saturate(0.08);
+  transition: opacity var(--anim-duration) var(--anim-ease),
+              filter var(--anim-duration) var(--anim-ease);
+}
+
+svg.embedded-svg.facet-anim-ready #labels_f1,
+svg.embedded-svg.facet-anim-ready #labels_f2,
+svg.embedded-svg.facet-anim-ready #labels_f3 {
+  opacity: 0;
+  transition: opacity var(--anim-duration) var(--anim-ease);
+}
+
+/* Mode 1: Show Facet 1 */
+svg.embedded-svg.facet-anim-ready[data-facet-mode="1"] #points_f1 {
+  opacity: 1;
+  filter: grayscale(0) saturate(1);
+}
+
+svg.embedded-svg.facet-anim-ready[data-facet-mode="1"] #labels_f1 {
+  opacity: 1;
+}
+
+svg.embedded-svg.facet-anim-ready[data-facet-mode="1"] #points_f2,
+svg.embedded-svg.facet-anim-ready[data-facet-mode="1"] #points_f3 {
+  opacity: 0.12;
+  filter: grayscale(1) saturate(0.05);
+}
+
+/* Mode 2: Show Facets 1 and 2 */
+svg.embedded-svg.facet-anim-ready[data-facet-mode="2"] #points_f1,
+svg.embedded-svg.facet-anim-ready[data-facet-mode="2"] #points_f2 {
+  opacity: 1;
+  filter: grayscale(0) saturate(1);
+}
+
+svg.embedded-svg.facet-anim-ready[data-facet-mode="2"] #labels_f1,
+svg.embedded-svg.facet-anim-ready[data-facet-mode="2"] #labels_f2 {
+  opacity: 1;
+}
+
+svg.embedded-svg.facet-anim-ready[data-facet-mode="2"] #points_f3 {
+  opacity: 0.12;
+  filter: grayscale(1) saturate(0.05);
+}
+
+/* Mode 3: Show Facets 1, 2, and 3 */
+svg.embedded-svg.facet-anim-ready[data-facet-mode="3"] #points_f1,
+svg.embedded-svg.facet-anim-ready[data-facet-mode="3"] #points_f2,
+svg.embedded-svg.facet-anim-ready[data-facet-mode="3"] #points_f3 {
+  opacity: 1;
+  filter: grayscale(0) saturate(1);
+}
+
+svg.embedded-svg.facet-anim-ready[data-facet-mode="3"] #labels_f1,
+svg.embedded-svg.facet-anim-ready[data-facet-mode="3"] #labels_f2,
+svg.embedded-svg.facet-anim-ready[data-facet-mode="3"] #labels_f3 {
+  opacity: 1;
+}

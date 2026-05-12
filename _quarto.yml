@@ -1,0 +1,27 @@
+project:
+  title: "Interactive Figure Animation Test"
+
+format:
+  revealjs:
+    controls: true
+    progress: true
+    slide-number: c/t
+    center: false
+    transition: fade
+    transition-speed: fast
+    chalkboard: false
+    navigation-mode: linear
+    controls-layout: bottom-right
+    hash: true
+    auto-stretch: false
+    theme:
+      - default
+      - assets/styles/theme.scss
+    include-after-body:
+      - assets/includes/after-body.html
+    embed-resources: true
+
+execute:
+  echo: false
+  warning: false
+  error: false
