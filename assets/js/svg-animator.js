@@ -2,6 +2,7 @@
   const DEFAULT_FIG6_NEUTRAL = "#cccccc";
   const DEFAULT_FIG2201_NEUTRAL = "#cccccc";
   const DEFAULT_FIG23_NEUTRAL = "#cccccc";
+  const DEFAULT_FIG26_NEUTRAL = "#cccccc";
   const DEFAULT_MUTED_OPACITY = "0.28";
   const FIG23_GREEN_COLORS = new Set(["#009900", "#006600", "#336633"]);
   const FIG23_ORANGE_COLORS = new Set(["#cc6633", "#ff9933", "#ff6600"]);
@@ -424,6 +425,101 @@
     }
   }
 
+  function findFigure26Stage(slide) {
+    if (!slide) {
+      return null;
+    }
+
+    return slide.querySelector('.svg-stage[data-svg-id="fig26_cp29a_accumulation"]');
+  }
+
+  function cacheFigure26NodeState(node) {
+    if (node.hasAttribute("data-fig26-cached")) {
+      return;
+    }
+
+    const styleAttr = node.getAttribute("style") || "";
+    const fillFromStyleAttr = (styleAttr.match(/(?:^|;)\s*fill\s*:\s*([^;]+)/i) || [])[1] || "";
+    const strokeFromStyleAttr = (styleAttr.match(/(?:^|;)\s*stroke\s*:\s*([^;]+)/i) || [])[1] || "";
+    const opacityFromStyleAttr = (styleAttr.match(/(?:^|;)\s*opacity\s*:\s*([^;]+)/i) || [])[1] || "";
+
+    const fill = (node.style?.getPropertyValue("fill") || node.getAttribute("fill") || fillFromStyleAttr || "").trim();
+    const stroke = (node.style?.getPropertyValue("stroke") || node.getAttribute("stroke") || strokeFromStyleAttr || "").trim();
+    const opacity = (node.style?.getPropertyValue("opacity") || node.getAttribute("opacity") || opacityFromStyleAttr || "").trim();
+    node.setAttribute("data-fig26-original-fill", fill);
+    node.setAttribute("data-fig26-original-stroke", stroke);
+    node.setAttribute("data-fig26-original-opacity", opacity);
+    node.setAttribute("data-fig26-cached", "true");
+  }
+
+  function applyFigure26Mode(slide, mode) {
+    const stage = findFigure26Stage(slide);
+    if (!stage) {
+      return;
+    }
+
+    const svg = stage.querySelector("svg.embedded-svg");
+    if (!svg) {
+      return;
+    }
+
+    svg.dataset.fig26Mode = String(mode);
+
+    const mutedGroup = svg.getElementById("muted");
+    if (!mutedGroup) {
+      return;
+    }
+
+    cacheFigure26NodeState(mutedGroup);
+    const nodes = Array.from(mutedGroup.querySelectorAll("*"));
+    const neutral = DEFAULT_FIG26_NEUTRAL;
+    const mutedOpacity = getMutedOpacity();
+
+    if (mode >= 1) {
+      mutedGroup.style.opacity = mutedOpacity;
+    } else {
+      const groupOriginalOpacity = mutedGroup.getAttribute("data-fig26-original-opacity") || "";
+      if (groupOriginalOpacity) {
+        mutedGroup.style.opacity = groupOriginalOpacity;
+      } else {
+        mutedGroup.style.removeProperty("opacity");
+      }
+    }
+
+    nodes.forEach((node) => {
+      cacheFigure26NodeState(node);
+      const originalFill = (node.getAttribute("data-fig26-original-fill") || "").toLowerCase();
+      const originalStroke = (node.getAttribute("data-fig26-original-stroke") || "").toLowerCase();
+
+      if (mode >= 1) {
+        if (originalFill) {
+          node.style.fill = neutral;
+        }
+        if (originalStroke) {
+          node.style.stroke = neutral;
+        }
+        node.style.removeProperty("opacity");
+      } else {
+        if (originalFill) {
+          node.style.fill = originalFill;
+        }
+        if (originalStroke) {
+          node.style.stroke = originalStroke;
+        }
+        node.style.removeProperty("opacity");
+      }
+    });
+  }
+
+  function syncFigure26Fragments(slide) {
+    if (!slide) {
+      return;
+    }
+
+    const mode = getLatestVisibleMode(slide, ".fragment.visible[data-fig26-mode]", "fig26Mode");
+    applyFigure26Mode(slide, mode);
+  }
+
   function syncFigure2202Fragments(slide) {
     if (!slide) {
       return;
@@ -550,6 +646,7 @@
       syncFigure2201Fragments(Reveal.getCurrentSlide());
       syncFigure2202Fragments(Reveal.getCurrentSlide());
       syncFigure23Fragments(Reveal.getCurrentSlide());
+      syncFigure26Fragments(Reveal.getCurrentSlide());
     });
 
     Reveal.on("fragmenthidden", (event) => {
@@ -562,6 +659,7 @@
       syncFigure2201Fragments(Reveal.getCurrentSlide());
       syncFigure2202Fragments(Reveal.getCurrentSlide());
       syncFigure23Fragments(Reveal.getCurrentSlide());
+      syncFigure26Fragments(Reveal.getCurrentSlide());
     });
 
     Reveal.on("ready", (event) => {
@@ -572,6 +670,7 @@
       syncFigure2201Fragments(event.currentSlide);
       syncFigure2202Fragments(event.currentSlide);
       syncFigure23Fragments(event.currentSlide);
+      syncFigure26Fragments(event.currentSlide);
     });
 
     Reveal.on("slidechanged", (event) => {
@@ -582,6 +681,7 @@
       syncFigure2201Fragments(event.currentSlide);
       syncFigure2202Fragments(event.currentSlide);
       syncFigure23Fragments(event.currentSlide);
+      syncFigure26Fragments(event.currentSlide);
     });
   }
 

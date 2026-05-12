@@ -4,9 +4,13 @@ project:
   output-dir: "_site"
   render:
     - index.qmd
+  resources:
+    - figures/*.svg
 
 format:
   revealjs:
+    width: 1920
+    height: 1080
     controls: true
     progress: true
     slide-number: c/t
